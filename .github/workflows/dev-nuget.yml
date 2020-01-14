@@ -13,6 +13,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v1
+    #  latest image has .NET 3.0 already installed, but not 3.1 yet
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
     - name: Build with dotnet
