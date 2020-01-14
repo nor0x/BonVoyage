@@ -12,6 +12,7 @@
     <VersionPrefix>0.2.0</VersionPrefix>
     <RepositoryUrl>https://github.com/nor0x/BonVoyage</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Configurations>Debug;Release;PreRelease</Configurations>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
