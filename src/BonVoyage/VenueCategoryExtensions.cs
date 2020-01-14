@@ -18,21 +18,21 @@ namespace BonVoyage
         }
 
         public static Task<IReadOnlyCollection<CompactVenue>> SearchVenues(this VenueCategory category,
-            string placeName, int limit)
+            string placeName, int limit, bool explore = false)
         {
             if (category == null) throw new ArgumentNullException(nameof(category));
 
             var client = new VenuesClient(category.HttpClient);
-            return client.Search(placeName, category.Id, limit);
+            return client.Search(placeName, category.Id, limit, explore);
         }
 
         public static Task<IReadOnlyCollection<CompactVenue>> SearchVenues(this VenueCategory category,
-            Location location, int limit)
+            Location location, int radius, int limit = 50, bool explore = false)
         {
             if (category == null) throw new ArgumentNullException(nameof(category));
 
             var client = new VenuesClient(category.HttpClient);
-            return client.Search(location, category.Id, limit);
+            return client.Search(location, category.Id, radius, limit, explore);
         }
     }
 }
