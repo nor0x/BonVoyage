@@ -13,10 +13,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v1
+      with:
+        dotnet-version: 3.1.100
     - name: Build with dotnet
-      run: dotnet build --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
+      run: dotnet build --configuration PreRelease --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
       shell: bash
-    - name: Publish nuget
+    - name: Publish nuget to GitHub Packages
       run: |
            for f in .src/BonVoyage/bin/Release/*.nupkg
            do
