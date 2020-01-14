@@ -9,7 +9,7 @@
     <Description>Foursquare .NET Client that you will fall in love with</Description>
     <PackageTags>foursquare;swarm</PackageTags>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <VersionPrefix>0.2.0</VersionPrefix>
+    <VersionPrefix>0.2.1</VersionPrefix>
     <RepositoryUrl>https://github.com/nor0x/BonVoyage</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Configurations>Debug;Release;PreRelease</Configurations>
