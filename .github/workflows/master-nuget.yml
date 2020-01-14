@@ -1,0 +1,30 @@
+name: release NuGet
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # also works with windows-latest and macos-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v1
+    #  latest image has .NET 3.0 already installed, but not 3.1 yet
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.100
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
+      shell: bash
+    - name: Publish nuget to GitHub Packages
+      run: |
+           for f in ./src/BonVoyage/bin/Release/*.nupkg
+           do
+             curl -vX PUT -u "nor0x:${{ secrets.GHPackagesToken }}" -F package=@$f https://nuget.pkg.github.com/nor0x/
+           done
+      shell: bash
