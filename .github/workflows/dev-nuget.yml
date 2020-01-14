@@ -23,7 +23,7 @@ jobs:
       shell: bash
     - name: Publish nuget to GitHub Packages
       run: |
-           for f in .src/BonVoyage/bin/Release/*.nupkg
+           for f in ./src/BonVoyage/bin/Release/*.nupkg
            do
              curl -vX PUT -u "nor0x:${{ secrets.GHPackagesToken }}" -F package=@$f https://nuget.pkg.github.com/nor0x/
            done
